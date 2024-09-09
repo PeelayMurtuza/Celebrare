@@ -31,7 +31,7 @@ export default function MainBody({ elements, setElements, selectedIndex, setSele
   };
 
   const handleTextChange = (index, newText) => {
-    recordState(); // Record state before changing text
+    recordState();
     setElements((prevElements) =>
       prevElements.map((el, i) =>
         i === index ? { ...el, text: newText } : el
@@ -48,11 +48,11 @@ export default function MainBody({ elements, setElements, selectedIndex, setSele
   });
 
   return (
-    <main ref={containerRef} className="flex-grow bg-gray-50 p-10 relative">
+    <main ref={containerRef} className="flex-grow w-full h-full bg-gradient-to-b from-gray-900 via-gray-700 to-gray-900 p-10 relative">
       {elements.map((element, index) => (
         <div
           key={index}
-          className={`border border-green-500 p-4 text-center absolute ${selectedIndex === index ? 'border-2 border-blue-500' : ''}`}
+          className={` rounded-lg shadow-md focus:outline-none focus:ring-2  p-4 text-center absolute ${selectedIndex === index ? ' ' : ''}`}
           style={{
             left: `${element.position.x}px`,
             top: `${element.position.y}px`,
@@ -65,7 +65,7 @@ export default function MainBody({ elements, setElements, selectedIndex, setSele
             type="text"
             value={element.text}
             onChange={(e) => handleTextChange(index, e.target.value)}
-            className="bg-transparent text-center"
+            className="bg-transparent text-center text-white"
             style={applyStyles(element)}
           />
         </div>
